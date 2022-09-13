@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Document</title>
+    </head>
+    <body>
+        <div id ="home" style="display:block;"></div>
+      <h1 id="showresults"></h1>
+      <button type="button" onclick="showDiv('insertdiv')">INSERT</button>
+      <button type="button" onclick="showDiv('updatediv')">UPDATE</button>
+      <button type="button" onclick="showDiv('updatediv')">DELETE</button>
+      <br>
+      <br>
+      <div id="main">
+        
+      </div>
+
+      <!-------- INSERTION DIV-------->
+      <div id="insertdiv" style="display:none;">
+        <h1>Insert Operation</h1>
+        <label> Enter the element to insert</label>
+        <input type="text" id="inpinsert">
+        <br>
+        <button type="button" onclick="insertfunc()">Insert</button>
+      </div>
+      <!-------- UPDATION DIV--------->
+      <div id="updatediv" style="display:none;">
+        <h1>Update Operation</h1>
+
+        <label>Which element you want to update</label>
+        <input type="text" id="n1">
+        <br>
+        <br>
+        <label>Enter the element you want to update</label>
+        <input type="text" id="n2">
+        <br>
+        <button type="button" onclick="updatefunc()">Update</button>
+
+        </div>
+        <!-------- DELETION DIV-------->
+        <div id="deletediv" style="display:none;">
+            <h1>Delete Operation</h1>
+            <label>Enter the element to delete</label>
+            <input type="text" id="inpdelete">
+            <br>
+            <br>
+            <button type="button" onclick="deletefunc()">Delete</button>
+         </div>
+         <script>
+            var arr = [];
+            function showDiv(div){
+                var data = document.getElementById(div).innerHTML;
+            document.getElementById('main').innerHTML = data;
+            }
+            function insertfunc(){
+                var insert_ele = document.getElementById('inpinsert').value;
+                var newarr = arr.splice(0,0,insert_ele);
+                document.getElementById('showresults').innerHTML = arr;
+            }
+            function updatefunc(){
+                var num1 = document.getElementById('n1').value;
+                var num2 = document.getElementById('n2').value;
+                var eleindex = arr.indexOf(num1);
+                var newarr = arr.splice(eleindex,1,num2);
+                document.getElementById('showresults').innerHTML = arr;
+            }
+            function deletefunc(){
+                var ele = document.getElementById('inpdelete').value;
+                var eleindex = arr.indexOf(ele);
+                var newarr = arr.splice(eleindex,1);
+                document.getElementById('showresults').innerHTML = arr;
+
+            }
+        
+         </script>
+    </body>
+</html>
